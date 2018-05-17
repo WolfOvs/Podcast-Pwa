@@ -8,7 +8,8 @@ import { DetailAudioComponent } from './detail-audio/detail-audio.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'podcast/:id', component: DetailPageComponent },
-  { path: 'podcast/:id/episode/:episodeId', component: DetailAudioComponent }
+  { path: 'podcast/:id/episode/:episodeId', component: DetailAudioComponent },
+  {path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({
