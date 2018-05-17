@@ -1,0 +1,2 @@
+<app-header (eventFilterClicked)="childEventFilterClicked($event)" (eventClicked)="childEventClicked($event)" (eventSearch)="childEventClickedSearch($event)"></app-header>
+<app-podcast-list [filter]="clickedFilterEvent" [event]="clickedEvent"></app-podcast-list>

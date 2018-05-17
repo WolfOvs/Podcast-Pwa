@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="detail-container">
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-xs-12" *ngIf="podCastDetailObj">
+      <div class="sidebar-container">
+        <div class="img-container" [ngStyle]="{'background-image': 'url(' + podCastDetailObj['artworkUrl30'] + ')'}">
+        </div>
+        <h2>{{ podCastDetailObj.collectionName }}</h2>
+        <p>by {{ podCastDetailObj.artistName }}</p>
+        <h3>Description:</h3>
+        <p>{{ podCastDetailObj.collectionCensoredName }}</p>
+      </div>
+    </div>
+    <div class="col-sm-8 col-xs-12">
+    <div class="audio-list-container" *ngIf="audioList">
+      <h2>Episodes: {{audioList.item.length}}</h2>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Date    </th>
+          <th>Duration</th>
+        </tr>
+        <tr *ngFor="let item of audioList.item" (click)="goToAudioPage(item, item['itunes:episode'][0])" [ngClass]="{'isNotLink': !item['itunes:episode']}">
+          <td class="title">{{truncateLabel(item.title, 100)}}</td>
+          <td class="date">{{ item.pubDate[0] | date :'dd/MM/yyyy' }}</td>
+          <td class="time">{{ item['itunes:duration'] }}</td>
+        </tr>
+      </table>
+    </div>
+      <div class="audio-list-container" *ngIf="!audioList">
+        <h2>Episodes: 0</h2>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

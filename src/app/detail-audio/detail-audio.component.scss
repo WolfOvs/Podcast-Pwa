@@ -1,0 +1,41 @@
+.detail-container {
+  padding-top:150px;
+  padding-bottom:50px;
+
+  .sidebar-container {
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:20px;
+  }
+
+  .img-container {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    position:relative;
+    border-radius:5px;
+    background-size:15%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  h4, h2 {
+    margin-top:20px;
+  }
+  table {
+    border:1px solid #000;
+
+    tr, td, th {
+      border:1px solid #000;
+
+    }
+  }
+
+  .audio-list-container {
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:20px;
+    audio {
+      width:100%;
+    }
+  }
+}

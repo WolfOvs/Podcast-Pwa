@@ -1,0 +1,17 @@
+<div class="container podcast-list-container" *ngIf='event'>
+    <ng-container *ngIf="(event | filter: this.filter) as result">
+        <div class="counter-container">
+          <span class="label-count"> Counter of podcasts:  </span>  <p class="counter"> {{result.length}}</p>
+        </div>
+      <div class="row">
+        <div *ngFor="let podcast of result" class="col-lg-3 col-xs-12 podcast-container" (click)="goToDetailPage(podcast, podcast.id.attributes['im:id'])">
+          <div class="img-container" [ngStyle]="{'background-image': 'url(' + podcast['im:image'][0].label + ')'}">
+          </div>
+            <div class="title-container">
+              <h2>{{podcast['im:name'].label}}</h2>
+              <h3>Author: {{podcast['im:artist'].label}}</h3>
+            </div>
+        </div>
+      </div>
+    </ng-container>
+</div>

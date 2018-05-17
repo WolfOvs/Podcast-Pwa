@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="detail-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-xs-12" *ngIf="detailAudio">
+        <div class="sidebar-container">
+          <div class="img-container" [ngStyle]="{'background-image': 'url(' + detailAudio.results[0]['artworkUrl30'] + ')'}">
+          </div>
+          <h2>{{ detailAudio.results[0].collectionName }}</h2>
+          <p>{{ detailAudio.results[0].artistName }}</p>
+          <h3>Description:</h3>
+          <p>{{ detailAudio.results[0].collectionCensoredName }}</p>
+        </div>
+      </div>
+      <div class="col-sm-8 col-xs-12">
+        <div class="audio-list-container">
+          <div [innerHTML]="detailAudio['results'][1]['description']"></div>
+          <audio controls>
+            <source src="{{detailAudio['results'][1]['enclosure'][0]['$']['url']}}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
