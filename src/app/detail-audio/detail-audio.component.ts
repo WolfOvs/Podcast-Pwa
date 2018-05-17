@@ -9,7 +9,13 @@ import { DataService } from '../data.service';
 export class DetailAudioComponent implements OnInit {
   detailAudio: any;
   constructor(public dataService: DataService) {
-    this.detailAudio = this.dataService.serviceData;
+    console.log('this.dataService.serviceData', this.dataService.serviceData);
+    if (this.dataService.serviceData) {
+      this.detailAudio = this.dataService.serviceData;
+      localStorage.setItem('savedData', JSON.stringify(this.detailAudio));
+    } else {
+      this.detailAudio = JSON.parse(localStorage.getItem('savedData'));
+    }
   }
 
   ngOnInit() {

@@ -19,7 +19,12 @@ export class DetailPageComponent implements OnInit {
   id: string;
   constructor(public dataService: DataService, private router: Router, private getPodcastDetailService: DetailpodcastService, private httpClient: HttpClient, private route: ActivatedRoute) {
     this.id = route.snapshot.paramMap.get('id');
-    this.getPodCastDetail(this.id);
+    this.podCastDetailObj = JSON.parse(localStorage.getItem('podCastDetailObj'));
+    this.audioList = JSON.parse(localStorage.getItem('audioList'));
+    if (!this.podCastDetailObj) {
+      console.log('NO');
+      this.getPodCastDetail(this.id);
+    }
   }
 
   ngOnInit() {
@@ -31,6 +36,7 @@ export class DetailPageComponent implements OnInit {
         (data) => {
           this.podCastDetail = data;
           this.podCastDetailObj = this.podCastDetail.results[0];
+          localStorage.setItem('podCastDetailObj', JSON.stringify(this.podCastDetailObj));
           this.getCORS();
         }
       );
@@ -51,6 +57,7 @@ export class DetailPageComponent implements OnInit {
         parseString(XML, (err, result) => {
           if (result) {
             this.audioList = result['rss']['channel'][0];
+            localStorage.setItem('audioList', JSON.stringify(this.audioList));
           }
         });
       });
@@ -58,7 +65,9 @@ export class DetailPageComponent implements OnInit {
 
   goToAudioPage = (item, episodeId) => {
     this.router.navigate(['podcast', this.id, 'episode', episodeId]);
-    this.podCastDetail.results.push(item);
+    if (this.podCastDetail) {
+      this.podCastDetail.results.push(item);
+    }
     this.dataService.serviceData = this.podCastDetail;
   }
 
