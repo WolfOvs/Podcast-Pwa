@@ -5,7 +5,7 @@
         </div>
       <div class="row">
         <a *ngFor="let podcast of result" class="col-lg-3 col-xs-12 podcast-container" (click)="goToDetailPage(podcast, podcast.id.attributes['im:id'])">
-          <div class="img-container" [ngStyle]="{'background-image': 'url(' + podcast['im:image'][0].label + ')'}">
+          <div class="img-container" [ngStyle]="{'background-image': 'url(' + podcast['im:image'][2].label + ')'}">
           </div>
             <div class="title-container">
               <h2>{{podcast['im:name'].label}}</h2>
