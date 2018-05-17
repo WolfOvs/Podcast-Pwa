@@ -16,7 +16,6 @@ export class DetailPageComponent implements OnInit {
   podCastDetailObj: object;
   feedUrl: string;
   audioList: any;
-  localDetailData: any;
   id: string;
   constructor(public dataService: DataService, private router: Router, private getPodcastDetailService: DetailpodcastService, private httpClient: HttpClient, private route: ActivatedRoute) {
     this.id = route.snapshot.paramMap.get('id');
